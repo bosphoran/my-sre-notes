@@ -25,7 +25,7 @@ Containers use operating system kernel, which is the core part of the OS that ma
 - Programs in userspace must go through the kernel. This interaction happens through system calls (syscalls).
 - The kernel acts as a middleman. It ensures that the apps use system resources safely without affecting the whole system.
 
-![User space vs Kernel space](/assets/img/docker-course/user-space-vs-kernel-space.gif)
+![User space vs Kernel space]({{ site.baseurl }}/assets/img/docker-course/user-space-vs-kernel-space.gif)
 
 > 💡 System calls are part of the kernel. They are implemented as functions in the kernel space, and user programs can access them using specific instructions or libraries (like the C library, glibc).
 
@@ -42,7 +42,7 @@ When you run the **ls command** to list files, the following happens:
 - The kernel packages the directory information and safely returns it to the **ls program**.
 - The **ls program** formats and displays the results in your terminal.
 
-![User space vs Kernel space ls example](/assets/img/docker-course/user-space-vs-kernel-space-example.gif)
+![User space vs Kernel space ls example]({{ site.baseurl }}/assets/img/docker-course/user-space-vs-kernel-space-example.gif)
 
 ---
 
@@ -89,7 +89,7 @@ By using containers, we gain three powerful benefits:
 - **Consistency**: The process runs the same way, no matter which system you put it on.
 - **Portability**: You can move the container across laptops, servers, or clouds, and it will still behave the same.
 
-![Visual Idea of a Container](/assets/img/docker-course/container.png)
+![Visual Idea of a Container]({{ site.baseurl }}/assets/img/docker-course/container.png)
 
 ---
 
@@ -115,7 +115,7 @@ An apartment building (Linux Machine) consists of many apartments (containers), 
 This isloation is made possible by Linux namespaces which give each container its own processes, network, mounts etc.
 On the other hand, cgroups control how much CPU, memory, and other resources each container can use.
 
-![Namespaces & cgroups](/assets/img/docker-course/namespace-cgroups.png)
+![Namespaces & cgroups]({{ site.baseurl }}/assets/img/docker-course/namespace-cgroups.png)
 
 ---
 
@@ -139,7 +139,7 @@ The most common Linux namespaces are as follow:
 
 Each container gets its own namespaces, and using these namespaces, a container can have its own network interfaces, IP address, and more.
 
-![Container Namespaces](/assets/img/docker-course/container-namespaces.png)
+![Container Namespaces]({{ site.baseurl }}/assets/img/docker-course/container-namespaces.png)
 
 ---
 
@@ -259,7 +259,7 @@ The answer is Control Groups (**cgroups**).
 
 Cgroups are a core building block of container technology. With cgroups, you can limit how much CPU, memory, network, or disk I/O a container can use.
 
-![cgroups](/assets/img/docker-course/cgroups.png)
+![cgroups]({{ site.baseurl }}/assets/img/docker-course/cgroups.png)
 
 ---
 
@@ -272,7 +272,7 @@ In this lab, we will learn how Linux control groups (cgroups) work by creating a
 - Run a Python process inside the cgroup
 - Observe how the process behaves when it hits CPU throttling or memory OOM limits
 
-![cgroup example](/assets/img/docker-course/cgroup-example.png)
+![cgroup example]({{ site.baseurl }}/assets/img/docker-course/cgroup-example.png)
 
 > cgroups form the foundation for container resource management in systems like Docker and K8s.
 
@@ -475,7 +475,7 @@ Docker is built on four main parts. These parts work together to manage and run 
 
 When dockerd receives the API request to create containers, dockerd understands the request and prepares the plan. dockerd then asks containerd to handle the container lifecycle by passing the container configuration and metadata.
 
-![containerd architecture](/assets/img/docker-course/containerd.png)
+![containerd architecture]({{ site.baseurl }}/assets/img/docker-course/containerd.png)
 
 ### 3. runc
 
@@ -515,7 +515,7 @@ Overall here is what **shim** does,
 
 It is the combination of dockerd + containerd + runc + containerd-shim working together.
 
-![containerd architecture](/assets/img/docker-course/docker-architecture.png)
+![containerd architecture]({{ site.baseurl }}/assets/img/docker-course/docker-architecture.png)
 
 ---
 
@@ -529,7 +529,7 @@ To build a developer-friendly workflow, Docker gives us a set of core components
 - **Docker Registries**: External systems that store and distribute images.
 - **Docker Containers**: The running instances created from images.
 
-![Docker Components](/assets/img/docker-course/docker-components.png)
+![Docker Components]({{ site.baseurl }}/assets/img/docker-course/docker-components.png)
 
 > Write Code --> Build Image (with app code & dependencies) --> Push to Registry --> Pull Image to Docker Host --> Run as Container.
 
@@ -561,7 +561,7 @@ That is where registries come in.
 
 > A registry is a centralized system for storing and distributing Docker images.
 
-![Docker Registry System](/assets/img/docker-course/docker-registry.png)
+![Docker Registry System]({{ site.baseurl }}/assets/img/docker-course/docker-registry.png)
 
 The most well-known docker registry is **Docker Hub**, provided by Docker Inc.
 
@@ -603,7 +603,7 @@ In Docker, that configuration file is called a Dockerfile.
 
 Docker reads the Dockerfile and automatically builds the image according to those instructions.
 
-![Dockerfile](/assets/img/docker-course/dockerfile.png)
+![Dockerfile]({{ site.baseurl }}/assets/img/docker-course/dockerfile.png)
 
 ###  How a Dockerfile Works
 
@@ -613,7 +613,7 @@ A Docker image is organized in a layered fashion. Each instruction in a **Docker
 
 The final layer is the topmost **writable layer**, which is used by the running container. The other layers in the image are **read-only**.
 
-![Dockerfile Layers](/assets/img/docker-course/dockerfile-layers.png)
+![Dockerfile Layers]({{ site.baseurl }}/assets/img/docker-course/dockerfile-layers.png)
 
 ---
 
@@ -623,7 +623,7 @@ Docker uses **base image** to launch containers or to build new container images
 
 For example, you might start with a lightweight base image like Alpine or a full OS image like Ubuntu. On top of that, you add your application code, dependencies, and configurations. Once the image is ready, you can use it to launch as many containers as you want.
 
-![Docker Base Image](/assets/img/docker-course/docker-base-image.png)
+![Docker Base Image]({{ site.baseurl }}/assets/img/docker-course/docker-base-image.png)
 
 ### Building Custom Docker Image
 
@@ -669,7 +669,7 @@ When the docker container is up and running, we can access our nginx page.
 http://192.168.77.50:8090
 ```
 
-![Nginx Page](/assets/img/docker-course/mynginx-page.png)
+![Nginx Page]({{ site.baseurl }}/assets/img/docker-course/mynginx-page.png)
 
 ---
 
@@ -706,7 +706,7 @@ Every layer holds a specific part of your app’s environment, such as
 - **App code**: Your actual app
 - **Config layer**: ENV vars, ports, entrypoints (changes often)
 
-![Docker Image Layers](/assets/img/docker-course/docker-image-layers.png)
+![Docker Image Layers]({{ site.baseurl }}/assets/img/docker-course/docker-image-layers.png)
 
 ### Layer Sharing
 
@@ -730,7 +730,7 @@ Each image contains duplicate copies of Ubuntu, package managers, and common dep
 
 Now, if these images share the layers that are identical, it would look like the following.
 
-![Docker Layer Sharing](/assets/img/docker-course/docker-layer-sharing.png)
+![Docker Layer Sharing]({{ site.baseurl }}/assets/img/docker-course/docker-layer-sharing.png)
 
 ---
 
@@ -960,7 +960,7 @@ We will build a web server image from scratch and run it.
 5. **Validate the Running Container**: After that, we will open the web app in a browser to confirm it’s running correctly.
 6. **Push the Image to a Registry**: Finally, we will push our verified image to Docker Hub so it can be shared or used in other environments.
 
-![Docker image build workflow](/assets/img/docker-course/image-build-workflow.png)
+![Docker image build workflow]({{ site.baseurl }}/assets/img/docker-course/image-build-workflow.png)
 
 Create a directory in the following order:
 
@@ -1077,7 +1077,7 @@ Now, open your browser and visit:
 http://192.168.77.50:9090
 ```
 
-![Nginx Demo2](/assets/img/docker-course/nginx-demo2.png)
+![Nginx Demo2]({{ site.baseurl }}/assets/img/docker-course/nginx-demo2.png)
 
 ---
 
@@ -1134,7 +1134,7 @@ ac9dbd7a384a: Pushed
 
 Head to your Docker Hub dashboard to see the image under your repositories.
 
-![DockerHub New Repository Push](/assets/img/docker-course/docker-hub.png)
+![DockerHub New Repository Push]({{ site.baseurl }}/assets/img/docker-course/docker-hub.png)
 
 We’ve successfully built an image, verified it locally, and pushed it to a registry.
 
@@ -1228,7 +1228,7 @@ node-app:1.0                           b42c0c41312b       1.65GB          412MB
 
 We will use node:22 as the base image, i.e., the image for all the dependencies & modules installation, after that, we will move the contents into a minimal and lighter alpine based image.
 
-![Multistage Builds](/assets/img/docker-course/multistage-builds.png)
+![Multistage Builds]({{ site.baseurl }}/assets/img/docker-course/multistage-builds.png)
 
 Lets, check our new Dockerfile, **Dockerfile2**.
 
@@ -1339,7 +1339,7 @@ If both **ENTRYPOINT** and **CMD** are specified in a **Dockerfile**, the comman
 
 The workflow diagram of ENTRYPOINT and CMD is given below
 
-![Entrypoint vs CMD](/assets/img/docker-course/entrypoint-cmd.gif)
+![Entrypoint vs CMD]({{ site.baseurl }}/assets/img/docker-course/entrypoint-cmd.gif)
 
 ### ENTRYPOINT
 
@@ -1525,7 +1525,7 @@ http://192.168.77.50:8092
 
 Given below is an overview workflow of what we are going to do in this lesson.
 
-![Dockerize Python Flask App](/assets/img/docker-course/python-flask-app.png)
+![Dockerize Python Flask App]({{ site.baseurl }}/assets/img/docker-course/python-flask-app.png)
 
 We will create the following directory structure:
 
@@ -1600,7 +1600,7 @@ zafar@zserver:~/docker-projects$ docker run -d -p 8000:8000 python-flask-app:1.0
 ```
 Now, you can access your Python Flask app at ***http://192.168.77.50:8000***
 
-![Python Flask App Page](/assets/img/docker-course/python-flask-app-page.png)
+![Python Flask App Page]({{ site.baseurl }}/assets/img/docker-course/python-flask-app-page.png)
 
 ---
 
@@ -1608,7 +1608,7 @@ Now, you can access your Python Flask app at ***http://192.168.77.50:8000***
 
 Given below is an overview workflow of what we are going to do in this lesson.
 
-![Dockerize NodeJS App](/assets/img/docker-course/dockerize-nodejs-app.png)
+![Dockerize NodeJS App]({{ site.baseurl }}/assets/img/docker-course/dockerize-nodejs-app.png)
 
 We will have the following Node.js project structure.
 
@@ -1672,7 +1672,7 @@ zafar@zserver:~/docker-projects$ docker run -d -p 3003:3000 nodejs-app:3.0
 
 Now, you can access your NodeJS app at ***http://192.168.77.50:3003***
 
-![NodeJS App Page](/assets/img/docker-course/nodejs-app-page.png)
+![NodeJS App Page]({{ site.baseurl }}/assets/img/docker-course/nodejs-app-page.png)
 
 ---
 
@@ -1680,7 +1680,7 @@ Now, you can access your NodeJS app at ***http://192.168.77.50:3003***
 
 In this lesson, you are going to learn about dockerizing Prometheus.
 
-![Dockerize Prometheus](/assets/img/docker-course/dockerize-prometheus.png)
+![Dockerize Prometheus]({{ site.baseurl }}/assets/img/docker-course/dockerize-prometheus.png)
 
 ### What is Prometheus
 
@@ -1808,7 +1808,7 @@ zafar@zserver:~/docker-projects$ docker run -d -p 9092:9090 prometheus:2.0
 
 Now, you can access your Prometheus Web UI at ***http://192.168.77.50:9092***
 
-![Prometheus Web UI](/assets/img/docker-course/prometheus-webui.png)
+![Prometheus Web UI]({{ site.baseurl }}/assets/img/docker-course/prometheus-webui.png)
 
 Prometheus uses **PromQL** query language. Also, in order to get system metrics we need NodeExporter. Otherwise, we can only query Prometheus's own metrics.
 
@@ -2041,7 +2041,7 @@ dive php:8.2-apache
 
 When executing the command, Dive opens an interactive terminal that displays each layer created based on the instructions provided in the Dockerfile.
 
-![Dive Image Details](/assets/img/docker-course/dive.png)
+![Dive Image Details]({{ site.baseurl }}/assets/img/docker-course/dive.png)
 
 
 ### Understanding Dive Interface
@@ -2072,7 +2072,7 @@ SlimToolkit is a tool used to optimize Docker images by removing unnecessary fil
 
 It analyzes your Docker image, identifies unused or redundant components, and then creates a new, optimized image that’s smaller, faster, and more secure.
 
-![SlimToolkit Diagram](/assets/img/docker-course/SlimToolkit.gif)
+![SlimToolkit Diagram]({{ site.baseurl }}/assets/img/docker-course/SlimToolkit.gif)
 
 - Before optimization, the Docker image size is, for example, 500MB.
 - The slim process starts with the slim build command.
@@ -2140,7 +2140,7 @@ It creates a Dockerfile and a compose.yaml file for multi-container setups, and 
 
 The following diagram shows the docker init workflow.
 
-![Docker Init Diagram](/assets/img/docker-course/docker_init.gif)
+![Docker Init Diagram]({{ site.baseurl }}/assets/img/docker-course/docker_init.gif)
 
 - Developer runs the docker init command inside the project directory.
 - docker init scans your project code files.
@@ -2206,7 +2206,7 @@ Hadolint is an open-source command-line tool that analyzes Dockerfiles for error
 
 Hadolint works by reading and parsing your Dockerfile into an Abstract Syntax Tree (AST). It then checks each instruction and argument against a set of predefined rules covering syntax, security, and performance best practices.
 
-![HadoLint Diagram](/assets/img/docker-course/HadoLint.gif)
+![HadoLint Diagram]({{ site.baseurl }}/assets/img/docker-course/HadoLint.gif)
 
 When Hadolint finds issues, it reports them along with severity levels to help you prioritize fixes.
 
@@ -2261,7 +2261,7 @@ hadolint Dockerfile
 
 You will get the following output with a Warning and Info message with the rule numbers and remediation info as shown in the image below.
 
-![HadoLint Dockerfile](/assets/img/docker-course/hadolint-dockerfile.png)
+![HadoLint Dockerfile]({{ site.baseurl }}/assets/img/docker-course/hadolint-dockerfile.png)
 
 When working with CI/CD systems, we need to standardize all the configuration and rules for linting. Here is where hadolint.yaml configuration files come in to picture.
 
@@ -2333,7 +2333,7 @@ During a scan, Trivy compares the software packages and libraries in a directory
 
 Here is an image that shows the Trivy scanning workflow.
 
-![Trivy Workflow](/assets/img/docker-course/trivy.gif)
+![Trivy Workflow]({{ site.baseurl }}/assets/img/docker-course/trivy.gif)
 
 ### Install Trivy
 
@@ -2360,7 +2360,7 @@ Scanning Docker Images using Trivy is very easy.
 trivy image <IMAGE_NAME>
 ```
 
-![Trivy Scan](/assets/img/docker-course/trivy-scan.png)
+![Trivy Scan]({{ site.baseurl }}/assets/img/docker-course/trivy-scan.png)
 
 Trivy can scan for vulnerabilities of a specific severity. To do this, use the --severity <severity> flag to specify the vulnerability severity.
 
@@ -2465,7 +2465,7 @@ The below command scans your Docker image and gives you an overview of every vul
 docker scout quickview <image-name>
 ```
 
-![Docker Scout Quickview](/assets/img/docker-course/scout-quickview.png)
+![Docker Scout Quickview]({{ site.baseurl }}/assets/img/docker-course/scout-quickview.png)
 
 To get a detailed report of Docker images, run the following command.
 
@@ -2505,7 +2505,7 @@ docker scout repo enable --org <account-name> <account-name>/<image-repository>
 https://scout.docker.com/
 ```
 
-![Docker Scout Result](/assets/img/docker-course/scout-docker-registry.png)
+![Docker Scout Result]({{ site.baseurl }}/assets/img/docker-course/scout-docker-registry.png)
 
 ---
 
@@ -2536,7 +2536,7 @@ Cosign is an open-source tool which is created to make container signing, verifi
 
 **Cosign** integrates with most container registries and supports both keyless and key-based signing.
 
-![Cosign](/assets/img/docker-course/cosign.gif)
+![Cosign]({{ site.baseurl }}/assets/img/docker-course/cosign.gif)
 
 Once the Docker image is pushed to a container registry, the developer signs the image using tools like Cosign using a private key.
 
@@ -3032,7 +3032,7 @@ There are two ways to achieve Docker in Docker
 
 Given below is an example diagram of how Docker in Docker by mounting the Docker socket (/var/run/docker.sock) works.
 
-![Docker in Docker](/assets/img/docker-course/dind.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/dind.png)
 
 First, understand what **/var/run/docker.sock** is.
 
@@ -3095,7 +3095,7 @@ docker build -t test-image .
 
 ### Method 2: Docker in Docker Using dind
 
-![Docker in Docker 2](/assets/img/docker-course/dind2.png)
+![Docker in Docker 2]({{ site.baseurl }}/assets/img/docker-course/dind2.png)
 
 This method actually creates a child container inside a container. Use this method only if you really want to have the containers and images inside the container. Otherwise, I would suggest you use the first approach.
 
@@ -3270,7 +3270,7 @@ The process explained in this section will give you a solid foundation on how im
 
 In most enterprise projects, each environment means, a dedicated cloud account ( or subscription/project depending on the cloud provider). Each account has its own VPC, IAM roles, Security, etc.
 
-![Docker in Docker](/assets/img/docker-course/enterprise-env-architecture.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/enterprise-env-architecture.png)
 
 The key reason for this is, **blast radius isolation**. Meaning, how much of the environment is affected when something happens to the environment. So if a developer deletes something in dev, only dev is affected.
 
@@ -3283,7 +3283,7 @@ Image promotion means taking a verified container image and moving it across env
 - Retagging the same image
 - Or copying the image to another registry using tools like crane or skopeo.
 
-![Docker in Docker](/assets/img/docker-course/image-promotion.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/image-promotion.png)
 
 ### Container Registry Patterns
 
@@ -3297,7 +3297,7 @@ Here are the two most commonly used registry patterns in enterprises.
 
 In this pattern, each environment gets its own dedicated container registry.
 
-![Docker in Docker](/assets/img/docker-course/container-registry-pattern-1.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/container-registry-pattern-1.png)
 
 Why separate registries?
 
@@ -3313,7 +3313,7 @@ In this pattern, you have one container registry for multiple environments. All 
 
 Each environment for the app is represented using tags, not separate repositories.
 
-![Docker in Docker](/assets/img/docker-course/container-registry-pattern-2.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/container-registry-pattern-2.png)
 
 The CI/CD pipeline promotes the same image digest through environments by re-tagging. No rebuilds or cross-registry copies.
 
@@ -3377,7 +3377,7 @@ Our pipeline is split into four stages. Each stage get triggered at a different 
 3. Image promotion from dev to stage environment
 4. Image promotion from stage to prod environment.
 
-![Docker in Docker](/assets/img/docker-course/image-build-promotion-pipeline.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/image-build-promotion-pipeline.png)
 
 ### Branching Strategy
 
@@ -3391,7 +3391,7 @@ Our pipeline follows a Git-flow style branching model. The key branches develop,
 
 The following image illustrates the git branching strategy.
 
-![Docker in Docker](/assets/img/docker-course/branching-strategy.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/branching-strategy.png)
 
 Here is the development flow.
 
@@ -3406,12 +3406,12 @@ This is where we will create a **hotfix branch**.
 
 For **emergency production fixes**, a **hotfix branch** is created from **main**, tested quickly, merged back to both main (prod deploy) and develop (so the fix is not lost).
 
-![Docker in Docker](/assets/img/docker-course/branching-strategy-hotfix.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/branching-strategy-hotfix.png)
 
 ### PR Check Workflow
 
 When you raise a Pull Request (PR) to the develop branch, this workflow kicks in automatically.
-![Docker in Docker](/assets/img/docker-course/pr-check-workflow.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/pr-check-workflow.png)
 
 Here is how it works.
 
@@ -3428,7 +3428,7 @@ If the PR check passes, it means the Dockerfile has no issues, the image builds 
 
 Once the PR is merged into the develop branch, the image build workflow triggers automatically.
 
-![Docker in Docker](/assets/img/docker-course/multi-arch-image-build.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/multi-arch-image-build.png)
 
 Here is how it works.
 
@@ -3461,7 +3461,7 @@ $ git checkout -b release/v1.2.0-sha-2b2e927 2b2e927
 
 The stage promotion workflow is manual. We need to pass the Docker image tagged with SHA in the pipeline as input.
 
-![Docker in Docker](/assets/img/docker-course/image-build-promotion04.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/image-build-promotion04.png)
 
 Here is what happens in this promotion pipeline.
 
@@ -3473,7 +3473,7 @@ Here is what happens in this promotion pipeline.
 
 This is the final gate in the pipeline. After stage environment tests pass, we push the changes to the main branch and manually trigger the production promotion.
 
-![Docker in Docker](/assets/img/docker-course/image-build-promotion05.png)
+![Docker in Docker]({{ site.baseurl }}/assets/img/docker-course/image-build-promotion05.png)
 
 Now, you might ask, **don't we need to rebuild the image from main?**
 
