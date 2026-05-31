@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/terminal.css' | relative_url }}">
+</head>
+<body>
+
+  <header class="status-bar">
+    <span>SYSTEM_STATUS: ONLINE</span>
+    <span>LOCATION: KAJAKI POWERHOUSE II</span>
+  </header>
+
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h3 style="color: var(--accent-color);">$ ls /categories</h3>
+      <nav>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 10px;">
+            <a href="{{ '/' | relative_url }}" style="color: white; text-decoration: none;">> ALL_SYSTEMS</a>
+          </li>
+          
+          {% assign categories = site.categories | sort %}
+          {% for category in categories %}
+            {% assign cat_name = category | first %}
+            <li style="margin-bottom: 8px;">
+              <a href="{{ '/category/' | append: cat_name | relative_url }}/" 
+                style="color: var(--text-color); text-decoration: none; font-size: 0.9rem;">
+                > {{ cat_name | upcase }} ({{ category | last | size }})
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      {{ content }}
+    </main>
+  </div>
+
+  <footer>
+    <p>SRE_ZETTELKASTEN // TERMINAL_V1.0 // {{ "now" | date: "%Y" }}</p>
+  </footer>
+
+</body>
+</html>

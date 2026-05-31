@@ -1,0 +1,367 @@
+---
+---
+:root {
+  --bg-color: #0d1117;
+  --panel-bg: #161b22;
+  --text-color: #c9d1d9;
+  --accent-color: #238636;
+  --border-color: #30363d;
+  --font-mono: 'Fira Code', 'Courier New', monospace;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header & Footer Styles */
+header, footer, .status-bar {
+  background-color: var(--panel-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 20px;
+  color: var(--accent-color);
+}
+
+footer {
+  border-top: 1px solid var(--border-color);
+  border-bottom: none;
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+/* The Main Container Grid */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 280px 1fr; /* This creates the left sidebar */
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  background-color: var(--panel-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 20px;
+}
+
+.main-content {
+  padding: 40px;
+  overflow-y: auto;
+  background-color: var(--bg-color);
+}
+
+/* List Item Styles */
+.note-list { display: flex; flex-direction: column; gap: 5px; }
+.note-row {
+  display: flex;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  text-decoration: none;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+.note-row:hover { border-color: var(--accent-color); }
+
+/* posts layout */
+
+/* Styling for the Markdown content inside the notes */
+.entry-content p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.entry-content h2, .entry-content h3 {
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+/* Make code blocks look like a real terminal */
+.entry-content pre {
+  background: #000;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+.entry-content code {
+  font-family: var(--font-mono);
+  color: #ff7b72; /* Subtle orange for inline code */
+}
+
+/* --- CODE BLOCK STYLING --- */
+
+/* The container for the code block */
+.entry-content pre {
+  background: #000000; /* Deep black for contrast */
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-color); /* The "SRE Green" accent */
+  padding: 1.5rem;
+  overflow-x: auto;
+  border-radius: 4px;
+  margin: 20px 0;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* The actual text inside code blocks */
+.entry-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #e6edf3; /* Off-white for readability */
+}
+
+/* Inline code (code not inside a <pre> block) */
+p > code, li > code {
+  background: #21262d;
+  color: #ff7b72; /* Light orange for contrast */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* --- ROUGE SYNTAX COLORS --- */
+/* These colors mimic the "Dark+" VS Code theme */
+
+.highlight .k  { color: #ff7b72; font-weight: bold; } /* Keyword */
+.highlight .s  { color: #a5d6ff; }                   /* String */
+.highlight .c  { color: #8b949e; font-style: italic; } /* Comment */
+.highlight .nb { color: #ffa657; }                   /* Name Builtin */
+.highlight .nt { color: #7ee787; }                   /* Name Tag (YAML keys) */
+.highlight .m  { color: #d2a8ff; }                   /* Number */
+.highlight .v  { color: #ffa657; }                   /* Variable */
+
+/* --- Link Styling --- */
+
+a {
+  color: #00ff41; /* "Matrix" Neon Green - very bright */
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  color: #ffffff; /* Turns white on hover */
+  border-bottom: 1px solid #00ff41;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6); /* Subtle glow effect */
+}
+
+/* Specific styling for links inside your note content */
+.entry-content a {
+  color: #58a6ff; /* A brighter, modern blue for internal note links */
+  font-weight: bold;
+}
+
+.entry-content a:hover {
+  color: #1f6feb;
+  text-decoration: underline;
+}
+
+/* Styling for the "Return to Dashboard" link at the bottom */
+.post-link {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Glowing Category Label */
+.post-category-tag {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: #00f2ff; /* Cyber Cyan */
+  border: 1px solid #00f2ff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-left: 10px;
+  background: rgba(0, 242, 255, 0.1);
+  box-shadow: 0 0 5px rgba(0, 242, 255, 0.5), 
+              inset 0 0 5px rgba(0, 242, 255, 0.2);
+  text-shadow: 0 0 5px rgba(0, 242, 255, 0.8);
+  vertical-align: middle;
+}
+
+/* Sidebar Link Hover Effect */
+.sidebar nav ul li a:hover {
+  color: #00f2ff !important;
+  padding-left: 5px;
+  transition: all 0.2s ease;
+}
+
+/* --- MySQL Specific Highlights --- */
+
+/* SQL Keywords (SELECT, FROM, WHERE, JOIN, UPDATE) */
+.highlight .k, .highlight .kn { 
+  color: #ff7b72; /* Vibrant Red/Orange for main commands */
+  font-weight: bold; 
+}
+
+/* SQL Functions (COUNT, SUM, NOW, CONCAT) */
+.highlight .nf { 
+  color: #d2a8ff; /* Purple for functions */
+}
+
+/* SQL Tables and Columns (after FROM or JOIN) */
+.highlight .n { 
+  color: #e6edf3; 
+}
+
+/* SQL Strings ('text') */
+.highlight .s, .highlight .s2 { 
+  color: #a5d6ff; /* Soft Blue */
+}
+
+/* SQL Numbers (LIMIT 10) */
+.highlight .m, .highlight .mi { 
+  color: #79c0ff; 
+}
+
+/* SQL Comments (-- comment or #) */
+.highlight .c, .highlight .c1 { 
+  color: #8b949e; 
+  font-style: italic; 
+}
+
+/* SQL Data Types (VARCHAR, INT, TIMESTAMP) */
+.highlight .kt { 
+  color: #ffa657; /* Orange for types */
+  font-weight: bold;
+}
+
+/* --- SRE Terminal Table Styling --- */
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+}
+
+.entry-content th {
+  background-color: #1c2128;
+  color: var(--accent-color);
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.entry-content td {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.entry-content tr:hover {
+  background-color: rgba(35, 134, 54, 0.1); /* Subtle green highlight on hover */
+}
+
+/* --- SRE List Styling --- */
+
+/* The overall list container */
+.entry-content ul {
+  list-style: none; /* We will provide our own "bullet" */
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* Individual list items */
+.entry-content li {
+  color: #00f2ff; /* Cyber Aqua/Cyan */
+  position: relative;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* Custom "Bullet" - The "-" symbol */
+.entry-content li::before {
+  content: "-";
+  color: var(--accent-color); /* SRE Green for the hyphen */
+  font-weight: bold;
+  position: absolute;
+  left: -20px;
+}
+
+/* If you use nested lists */
+.entry-content ul ul {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.entry-content ul ul li {
+  color: #7ee787; /* Light green for sub-items to show hierarchy */
+  font-size: 0.95rem;
+}
+
+/* --- SRE Blockquote Styling --- */
+
+.entry-content blockquote {
+  background: rgba(35, 134, 54, 0.05); /* Very faint green tint */
+  border-left: 4px solid #f2cc60; /* Warning Gold / Amber color */
+  margin: 20px 0;
+  padding: 15px 25px;
+  font-style: italic;
+  color: #e1b824; /* Slightly muted white */
+  position: relative;
+}
+
+/* Optional: Add a "INFO" or "LOG" label to the top of every quote */
+.entry-content blockquote::before {
+  content: "ADVISORY:";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #f2cc60;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Ensure paragraphs inside quotes don't add extra margin */
+.entry-content blockquote p {
+  margin: 0;
+}
+
+/* --- Date Timestamp Styling --- */
+
+.note-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #f2cc60; /* Amber / System Gold */
+  background: rgba(242, 204, 96, 0.1); /* Subtle glow background */
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: 1px solid rgba(242, 204, 96, 0.3);
+  min-width: 90px;
+  text-align: center;
+  margin-right: 15px;
+  letter-spacing: 1px;
+}
+
+/* Make the ">>" symbol stand out too */
+.note-symbol {
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-right: 10px;
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+/* Make H2 look like a sleek terminal sub-header */
+.entry-content h2 {
+  font-size: 1.2rem; /* Smaller size */
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+  margin-top: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

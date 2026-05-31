@@ -1,0 +1,21 @@
+---
+layout: dashboard
+---
+<h1>[ SYSTEM_FILTER: {{ page.title | upcase }} ]</h1>
+
+<div class="note-list">
+  {% for post in site.categories[page.category_name] %}
+    <a href="{{ post.url | relative_url }}" class="note-row">
+      <span class="note-date">
+        {{ post.date | date: "%d-%b-%Y" | upcase }}
+      </span>
+      <span class="note-symbol">>></span>
+      <span class="note-title">{{ post.title }}</span>
+      <span class="post-category-tag">{{ page.category_name }}</span>
+    </a>
+  {% endfor %}
+</div>
+
+<div style="margin-top: 30px;">
+  <a href="{{ '/' | relative_url }}" class="post-link"><< BACK_TO_ROOT</a>
+</div>

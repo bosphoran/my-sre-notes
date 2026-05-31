@@ -1,0 +1,45 @@
+Topics Covered								Lessons
+==============								=======
+Introduction									7
+Cluster Architecture							4
+Kubeadm Cluster Setup							14
+Cluster Configurations							9
+Enhancing Productivity with kubectl				3
+Perform Cluster Version upgrade Using Kubeadm	4
+etcd Backup and Restore							5
+Pods											7
+Static Pods										5
+Command and Arguments							4
+Init Containers									8
+ReplicaSets										4
+Deployments										14
+Horizontal Pod Autoscaler						11
+JSONPath										7
+Jobs & CronJobs									8
+DaemonSets										5
+Labels and Selectors							4
+Taints and Tolerations							9
+Node Name & Node Selector						5
+Node Affinity									5
+Namespaces										4
+Service Accounts								5
+RBAC											7
+Roles & ClusterRoles							10
+Volumes											7
+Persistent Volumes								6
+Storage Class									6
+Environment Variables							7
+ConfigMaps										13
+Secrets											11
+Resource Requests & Limits						12
+Pod Priority & Preemption						9
+Services										18
+Ingress											16
+Gateway API										24
+Network Policy									12
+Vertical Pod Autoscaler							13
+Operator Pattern								11
+Helm											15
+Kubernetes Architecture Deep Dive				10
+===================================================
+Total Lessons									358
