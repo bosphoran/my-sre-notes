@@ -374,4 +374,3 @@ As you may notice, node01 has been upgrade to **v1.34.8**.
 You have to apply the upgrade to all worker nodes separately. Follow the same steps applied to the **node01**.
 
 ---
-
