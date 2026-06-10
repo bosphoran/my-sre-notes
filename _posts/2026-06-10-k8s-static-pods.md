@@ -11,7 +11,7 @@ categories: [k8s]
 
 The **kubelet** service periodically scans the directory at **/etc/kubernetes/manifest** for the manifest files and creates static pods based on these manifest files.
 
-![static pod]({{ site.baseurl }}/assets/img/k8s-course/static-pod.png)
+![static pod]({{ site.baseurl }}/assets/img/k8s-course/static-pod.jpg)
 
 - **Node-Bound**: Static pods are permanently tied to the specific node where they reside. If the node crashes, the Pods cannot be rescheduled to a different node.
 - **Mirror Pods**: Although the **API server** doesn't control static Pods, the **kubelet** creates a read-only **mirror pod** on the API server so you can view the Pod's status using standard **kubectl** command.
