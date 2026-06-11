@@ -94,7 +94,7 @@ status: {}
 
 Lets run a complex shell script with loop and function in args.
 
-For this, we need to use the **pipe operator |** with arguments. It allows you to write a command or script that spans multiple lines.
+For this, we need to use the **pipe operator "\|"** with arguments. It allows you to write a command or script that spans multiple lines.
 
 ```bash
 vagrant@controlplane:~$ cat script-pod.yaml
