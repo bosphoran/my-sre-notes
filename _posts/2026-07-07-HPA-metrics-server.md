@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "HPA Metrics Server Examples (metrics, custom.metrics, external.metrics)"
+title: "HPA Metrics Server Examples"
 date: 2026-07-07
 categories: [k8s]
 ---
