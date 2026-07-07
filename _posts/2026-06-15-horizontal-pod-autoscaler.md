@@ -493,3 +493,39 @@ sre-web   Deployment/sre-web   <unknown>/500m   1         10        3          1
 > **<unknown>** means the HPA can’t fetch the metric value. You need to ensure your app exposes http_requests, Prometheus scrapes it, and the Adapter maps it correctly into **custom.metrics.k8s.io**.
 
 Adding a **Prometheus client library** to your application code is what makes **/metrics** available.
+
+---
+
+### Scaling With External Metrics
+
+The External Metrics API in K8s provides a way to access metrics from systems outside of the K8s cluster for making autoscaling decisions. For this, we can make use of **KEDA**.
+
+> **KEDA** (Kubernetes Event-driven Autoscaling) is an open-source tool for K8s that provides event-driven autoscaling. **KEDA** doesn't replace **HPA**. It builds upon and extends the standard K8s Horizontal Pod Autoscaler (HPA) v2 with **type: External**.
+
+**KEDA** scales based on external signals or events.
+
+- The number of messages in a message queue (like SQS, Kafka, Azure Service Bus, etc)
+- The length of a list in a Redis cache
+- Metrics from systems like Prometheus, Datadog, etc.
+
+**Enabling External Metrics API:**
+
+When you install **KEDA**, it automatically registers the **external.metrics.k8s.io** API group with the API server.
+
+```bash
+# Add KEDA repo
+vagrant@controlplane:~$ helm repo add kedacore https://kedacore.github.io/charts
+"kedacore" has been added to your repositories
+
+# Update Helm repository
+vagrant@controlplane:~$ helm repo update
+
+# Install KEDA helm chart
+vagrant@controlplane:~$ helm install keda kedacore/keda --namespace keda --create-namespace
+
+# Verify external metrics server
+vagrant@controlplane:~$ kubectl api-versions | grep metrics
+custom.metrics.k8s.io/v1beta1
+external.metrics.k8s.io/v1beta1
+metrics.k8s.io/v1beta1
+```
