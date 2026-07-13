@@ -24,7 +24,7 @@ There are two types of node affinity:
 
 We can specify node affinities using the **affinity.nodeAffinity** field in the **spec** section of the pod manifest. And the **matchExpressions** acts as a filter for labels. Also, we can use operators like **In**, **NotIn**, **Exists**, and **DoesNotExist**.
 
-![Node Affinity 2]({{ site.baseurl }}/assets/img/k8s-course/node-affinity-2.jpg)
+![Node Affinity 2]({{ site.baseurl }}/assets/img/k8s-course/node-affinity-2.png)
 
 **preferredDuringSchedulingIgnoredDuringExecution** supports a parameter called **weight**. It is a way to say how important this particular rule is compared to other rules. **Weight** can be between **1 and 100**, where a higher number means the rule is more important.
 
